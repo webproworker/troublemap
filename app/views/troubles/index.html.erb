@@ -1,0 +1,12 @@
+<h1>Listing every trouble in the city</h1>
+
+<%= link_to 'Add a new trouble', new_trouble_path %>
+
+<% @troubles.each do |post| %>
+  <div>
+    <h3> <%= post.name %> </h3>
+    <strong> <%= post.location %> </strong> <br/>
+    <strong> <%= post.description %> </strong>
+    <hr />
+  </div>
+<% end %>
