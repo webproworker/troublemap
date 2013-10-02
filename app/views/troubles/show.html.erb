@@ -6,8 +6,13 @@
 <%= @trouble.location %> <br/>
 
 <strong>description:</strong>
-<%= @trouble.description %>
+<%= @trouble.description %> <br/>
 
-<br/>
+<strong> <%= link_to 'Back to the trouble list', troubles_path %> </strong> |
+<strong> <%= link_to 'Edit', edit_trouble_path(@trouble) %></strong>
 
-<%= link_to 'Back to the trouble list', troubles_path %>
+<h2>Add a comment</h2>
+<%= render 'comments/form' %>
+
+<h2>Comments</h2>
+<%= render @trouble.comments %>

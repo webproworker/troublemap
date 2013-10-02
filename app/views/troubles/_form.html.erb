@@ -1,0 +1,25 @@
+<%= form_for :trouble, url: troubles_path do |f| %>
+  
+  <% if @trouble.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@trouble.errors.count, "error") %> prohibited this post from being saved</h2>
+      <ul>
+        <% @trouble.errors.full_messages.each do |msg| %>
+          <li> <%= msg %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br/>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %> <br/>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %> <br/>
+
+  <%= f.submit %>
+
+<% end %>

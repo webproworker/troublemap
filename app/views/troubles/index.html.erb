@@ -2,11 +2,14 @@
 
 <%= link_to 'Add a new trouble', new_trouble_path %>
 
-<% @troubles.each do |post| %>
+<% @troubles.each do |trouble| %>
   <div>
-    <h3> <%= post.name %> </h3>
-    <strong> <%= post.location %> </strong> <br/>
-    <strong> <%= post.description %> </strong>
+    <h3> <%= trouble.name %> </h3>
+    <strong> <%= trouble.location %> </strong> <br/>
+    <strong> <%= trouble.description %> </strong>
+    <strong> <%= link_to 'Show', trouble_path(trouble) %></strong>
+    <strong> <%= link_to 'Edit', edit_trouble_path(trouble) %></strong>
+    <strong> <%= link_to 'Destroy', trouble_path(trouble), method: :delete, data: {confirm: 'Are you sure?'} %></strong>
     <hr />
   </div>
 <% end %>
