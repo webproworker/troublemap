@@ -4,6 +4,9 @@ Troublemap::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :troubles do
     resources :comments
+    member do
+      get 'city'
+    end
   end
   # You can have the root of your site routed with "root"
   root 'welcome#index'

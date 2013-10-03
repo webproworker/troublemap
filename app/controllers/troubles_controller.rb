@@ -1,6 +1,6 @@
 class TroublesController < ApplicationController
 
-  http_basic_authenticate_with name: "test", password: "parola", except: [:index, :show]
+  # http_basic_authenticate_with name: "test", password: "parola", except: [:index, :show]
 
   def index
     @troubles = Trouble.all
@@ -11,7 +11,7 @@ class TroublesController < ApplicationController
   end
   
   def create
-    @trouble = Trouble.new(params[:trouble].permit(:name, :location, :description))
+    @trouble = Trouble.new(params[:trouble].permit(:name, :city, :location, :description))
     if @trouble.save
       redirect_to @trouble
     else
@@ -23,14 +23,19 @@ class TroublesController < ApplicationController
     @trouble = Trouble.find(params[:id])
   end
 
+  def city
+    @troubles = Trouble.all
+    @city = Trouble.find(params[:id]).city
+  end
+
   def edit
-    @trouble = Trouble.find(params[:id])
+    @troubles = Trouble.find(params[:id])
   end
 
   def update
     @trouble = Trouble.find(params[:id])
 
-    if @trouble.update(params[:trouble].permit(:name, :location, :description))
+    if @trouble.update(params[:trouble].permit(:name, :city, :location, :description))
       redirect_to @trouble
     else
       render 'edit'
