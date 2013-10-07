@@ -1,7 +1,6 @@
 class TroublesController < ApplicationController
 
   # http_basic_authenticate_with name: "test", password: "parola", except: [:index, :show]
-  @json = Trouble.all.to_gmaps4rails
 
   def index
     @troubles = Trouble.all
@@ -22,6 +21,7 @@ class TroublesController < ApplicationController
 
   def show
     @trouble = Trouble.find(params[:id])
+    @json = Trouble.all.to_gmaps4rails
   end
 
   def city
