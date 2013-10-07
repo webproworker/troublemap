@@ -8,11 +8,19 @@
 <strong>Location:</strong>
 <%= @trouble.location %> <br/>
 
-<strong>description:</strong>
+<strong>Description:</strong>
 <%= @trouble.description %> <br/>
+
+<strong>Address:</strong>
+<%= @trouble.address %> <br/>
 
 <strong> <%= link_to 'Back to the trouble list', troubles_path %> </strong> |
 <strong> <%= link_to 'Edit', edit_trouble_path(@trouble) %></strong>
+
+
+
+<%= gmaps4rails(@json) %>
+<%= yield :scripts %>
 
 <h2>Add a comment</h2>
 <%= render 'comments/form' %>
