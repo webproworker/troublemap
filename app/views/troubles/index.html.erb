@@ -8,7 +8,7 @@
     <strong> City: </strong> <%= link_to trouble.city, city_trouble_path(trouble) %> <br/>
     <strong> Location: </strong> <%= trouble.location %> <br/>
     <strong> Description: </strong> <%= trouble.description %> <br/>
-    <strong> </strong> <%= link_to 'Show', trouble_path(trouble) %></strong> |
+    <strong> </strong> <%= link_to 'Show', trouble_path(trouble), 'data-no-turbolink' => true %></strong> |
     <strong> </strong> <%= link_to 'Edit', edit_trouble_path(trouble) %></strong> |
     <strong> </strong> <%= link_to 'Destroy', trouble_path(trouble), method: :delete, data: {confirm: 'Are you sure?'} %>
     <hr />

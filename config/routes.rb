@@ -9,7 +9,7 @@ Troublemap::Application.routes.draw do
     end
   end
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'troubles#frontpage'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

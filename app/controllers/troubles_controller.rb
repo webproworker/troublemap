@@ -6,6 +6,11 @@ class TroublesController < ApplicationController
     @troubles = Trouble.all
   end
 
+  def frontpage
+    @troubles = Trouble.all
+    @jsonAll = @troubles.to_gmaps4rails    
+  end
+
   def new
     @trouble = Trouble.new
   end
@@ -21,7 +26,7 @@ class TroublesController < ApplicationController
 
   def show
     @trouble = Trouble.find(params[:id])
-    @json = Trouble.all.to_gmaps4rails
+    @json = @trouble.to_gmaps4rails
   end
 
   def city
