@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131004101050) do
+ActiveRecord::Schema.define(version: 20131008105857) do
 
   create_table "comments", force: true do |t|
     t.string   "commenter"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20131004101050) do
     t.float    "longitude"
     t.boolean  "gmaps"
     t.string   "address"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
