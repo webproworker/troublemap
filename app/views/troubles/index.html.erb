@@ -1,16 +1,16 @@
 <h1>Listing every trouble in the country</h1>
 
-<%= link_to 'Add a new trouble', new_trouble_path(@trouble) %>
+<%= link_to 'Add a new trouble', new_trouble_path(@trouble) %> |
+<%= link_to 'Homepage', root_path %>
 
 <% @troubles.each do |trouble| %>
   <div>
-    <h3> <%= trouble.name %> </h3>
+    <h3> <%= link_to trouble.name, trouble_path(trouble), 'data-no-turbolink' => true %> </h3>
     <strong> City: </strong> <%= link_to trouble.city, city_trouble_path(trouble) %> <br/>
     <strong> Location: </strong> <%= trouble.location %> <br/>
     <strong> Description: </strong> <%= trouble.description %> <br/>
-    <strong> </strong> <%= link_to 'Show', trouble_path(trouble), 'data-no-turbolink' => true %></strong> |
     <strong> </strong> <%= link_to 'Edit', edit_trouble_path(trouble) %></strong> |
-    <strong> </strong> <%= link_to 'Destroy', trouble_path(trouble), method: :delete, data: {confirm: 'Are you sure?'} %>
+    <strong> </strong> <%= link_to 'Delete', trouble_path(trouble), method: :delete, data: {confirm: 'Are you sure?'} %>   
     <hr />
   </div>
 <% end %>
