@@ -7,14 +7,17 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :email
   validates_uniqueness_of :email
-
-  def self.authenticate(email,password)
-    user = find_by_email(email)
+  
+  def self.authenticate(email, password)
+    user = User.where(email: email).first
+    throw Exception.new(user.password_hash)
+    # throw Exception.new(BCrypt::Engine.hash_secret(password, user.password_salt))
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
-    else
+    else 
+      throw Exception.new("e nul")
       nil
-    end  
+    end
   end
 
   def encrypt_password

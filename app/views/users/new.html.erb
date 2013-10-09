@@ -5,7 +5,7 @@
     <div id="errorExplanation">
       <h2>Form is invalid</h2>
       <ul>
-        <% @trouble.errors.full_messages.each do |msg| %>
+        <% @user.errors.full_messages.each do |msg| %>
           <li> <%= msg %> </li>
         <% end %>
       </ul>
