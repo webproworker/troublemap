@@ -7,8 +7,11 @@ class TroublesController < ApplicationController
   end
 
   def frontpage
-    @troubles = Trouble.all
-    @jsonAll = @troubles.to_gmaps4rails    
+    @jsonAll = Trouble.all.to_gmaps4rails do |trouble, marker|
+      marker.infowindow render_to_string(:partial => "troubles/marker_infowindow", :locals => {:trouble => trouble})
+      marker.title trouble.address
+      marker.json({ :id => trouble.id, :foo => "bar" })
+    end
   end
 
   def new
