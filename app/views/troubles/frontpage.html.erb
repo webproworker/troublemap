@@ -1,11 +1,7 @@
-
-
 <h1>Hello everyone! Here we will have the trouble map.</h1>
 <%= link_to "List of troubles in the city", controller: "troubles" %>
 
-<div class="main_map">
-  <%= gmaps(:markers => {"data" => @jsonAll},
-            :map_options => { :raw => "{scrollwheel: false}", :container_class => "main_map"}
-            )%>
-  <%= yield :scripts %>
-</div>
+<%= gmaps(:markers => {"data" => @jsonAll},
+          :map_options => { :raw => "{scrollwheel: false}", :container_class => "main_map", :detect_location => true, :center_on_user => true, :zoom => 1}
+          )%>
+<%= yield :scripts %>
