@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.fetch(:user).permit(:name, :email, :password, :password_confirmation) if params[:user]
+      params.fetch(:user).permit(:email, :password, :password_confirmation) if params[:user]
     end
 
 end

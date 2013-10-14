@@ -2,21 +2,21 @@
 <html>
 <head>
   <title>Troublemap</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div id="navigation">
-  <% if @current_user %>
-    <%= current_user.name %>
-    <%= link_to "log out", log_out_path %>
+<header>
+  <%if current_user %>
+    Welcome <%= current_user.name %>!
+    <%= link_to "Sign out", signout_path %>
   <% else %>
-    <%= link_to "sign up", sign_up_path %> or
-    <%= link_to "log in", log_in_path %>
+    <%= link_to "sign in with twitter", "/auth/twitter" %> |
+    <%= link_to "sign in with facebook", "/auth/facebook" %>
   <% end %>
-</div>
+</header>
 
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
