@@ -14,7 +14,10 @@
     <%= link_to "Sign out", signout_path %>
   <% else %>
     <%= link_to "sign in with twitter", "/auth/twitter" %> |
-    <%= link_to "sign in with facebook", "/auth/facebook" %>
+    <%= link_to "sign in with facebook", "/auth/facebook" %> |
+    <%= link_to "Create an account", "/auth/identity/register" %> or
+    <%= link_to "Log in", "/auth/identity" %>
+
   <% end %>
 </header>
 

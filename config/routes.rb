@@ -3,6 +3,7 @@ Troublemap::Application.routes.draw do
 
   get "auth/twitter/callback" => "sessions#create"
   get "auth/facebook/callback" => "sessions#create"
+  post "auth/identity/callback" => "sessions#create"
   get "signout" => "sessions#destroy", :as => :signout
   # get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.

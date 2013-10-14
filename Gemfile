@@ -39,6 +39,7 @@ end
 gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-identity'
 
 # Use unicorn as the app server
 # gem 'unicorn'
