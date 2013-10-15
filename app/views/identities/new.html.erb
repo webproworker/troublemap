@@ -1,0 +1,29 @@
+<h1>Sign up</h1>
+
+<%= form_tag "auth/identity/register" do %>
+  <% if @identity && @identity.errors.any? %>
+    <div class="error_messages">
+      <h3><%= pluralize(@identity.errors.count, "error") %></h3>
+      <ul>
+        <% identity.errors.full_messages.each do |msg| %>
+          <li><% msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= label_tag :name %>
+  <%= text_field_tag :name, @identity.try(:name) %> <br/>
+
+  <%= label_tag :email %>
+  <%= text_field_tag :email, @identity.try(:email) %> <br/>
+
+  <%= label_tag :password %>
+  <%= password_field_tag :password %> <br/>
+
+  <%= label_tag :password_confirmation %>
+  <%= password_field_tag :password_confirmation %> <br/>
+
+  <%= submit_tag "Register" %>
+
+<% end %>

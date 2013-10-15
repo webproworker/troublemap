@@ -21,8 +21,12 @@
           :markers => {"data" => @json}) %>
 <%= yield :scripts %>
 
-<h2>Add a comment</h2>
-<%= render 'comments/form' %>
+<% if current_user %>
+  <h2>Add a comment</h2>
+  <%= render 'comments/form' %>
+<% else %>
+  <p>You need to log in (or <%= link_to "register", "/auth/identity/register" %> if you don't have an account), in order to post comments.</p>
+<% end %>
 
 <h2>Comments</h2>
 <%= render @trouble.comments %>

@@ -15,6 +15,8 @@ Troublemap::Application.routes.draw do
     end
   end
 
+  resources :identities
+
   # You can have the root of your site routed with "root"
   root 'troubles#frontpage'
 
