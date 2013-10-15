@@ -2,23 +2,36 @@
 <html>
 <head>
   <title>Troublemap</title>
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <header>
-  <%if current_user %>
-    Welcome <%= current_user.name %>!
-    <%= link_to "Sign out", signout_path %>
-  <% else %>
-    <%= link_to "sign in with twitter", "/auth/twitter" %> |
-    <%= link_to "sign in with facebook", "/auth/facebook" %> |
-    <%= link_to "Create an account", "/auth/identity/register" %> or
-    <%= link_to "Log in", "/auth/identity" %>
-
-  <% end %>
+  <nav>
+    <%= link_to "Home", root_path %>
+  </nav>
+  <div class="user_login_area">
+    <%if current_user %>
+      Welcome <%= current_user.name %>!
+      <%= link_to "Sign out", signout_path %>
+    <% else %>
+      <%= link_to "sign in with twitter", "/auth/twitter" %> |
+      <%= link_to "sign in with facebook", "/auth/facebook" %> |
+      <%= link_to "Create an account", new_identity_path %> or
+      <!-- <%= link_to "Log in", "/auth/identity" %> -->
+      <div>
+        <%= form_tag "/auth/identity/callback" do %>
+          <%= label_tag :auth_key, "Email" %>
+          <%= text_field_tag :auth_key %> <br/>
+          <%= label_tag :password %>
+          <%= text_field_tag :password %> <br/>
+          <%= submit_tag "Log in" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </header>
 
 <% flash.each do |name, msg| %>
