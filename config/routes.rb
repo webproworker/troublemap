@@ -1,5 +1,5 @@
 Troublemap::Application.routes.draw do
-  get "troubles/city/:id" => "troubles#city", :as => :city_trouble
+  # get "troubles/city/:id" => "troubles#city", :as => :city_trouble
 
   get "auth/twitter/callback" => "sessions#create"
   get "auth/facebook/callback" => "sessions#create"
@@ -10,12 +10,10 @@ Troublemap::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :troubles do
     resources :comments
-    member do
-      get 'city'
-    end
   end
 
   resources :identities
+  resources :cities
 
   # You can have the root of your site routed with "root"
   root 'troubles#frontpage'
