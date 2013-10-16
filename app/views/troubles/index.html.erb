@@ -5,7 +5,7 @@
 
 <% @troubles.each do |trouble| %>
   <div>
-    <h3> <%= link_to trouble.name, trouble_path(trouble), 'data-no-turbolink' => true %> </h3>
+    <h3> <%= link_to trouble.name, trouble_path(trouble) %> </h3>
     <strong> City: </strong> <%= link_to trouble.city, city_trouble_path(trouble) %> <br/>
     <strong> Location: </strong> <%= trouble.location %> <br/>
     <strong> Description: </strong> <%= trouble.description %> <br/>
