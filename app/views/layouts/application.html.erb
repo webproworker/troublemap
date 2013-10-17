@@ -10,7 +10,11 @@
 
 <header>
   <nav>
-    <%= link_to "Home", root_path %>
+    <%= link_to "Home", root_path %> |
+    <%= link_to "All troubles", troubles_path %> |
+    <%= link_to "Cities", cities_path %> |
+    <%= link_to "Add city", new_city_path %> |
+    <%= link_to "Add trouble", new_trouble_path %> |
   </nav>
   <div class="user_login_area">
     <%if current_user %>

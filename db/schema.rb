@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131014134406) do
+ActiveRecord::Schema.define(version: 20131017080357) do
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.string   "commenter"
@@ -37,12 +43,14 @@ ActiveRecord::Schema.define(version: 20131014134406) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "city"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
     t.string   "address"
+    t.integer  "city_id"
   end
+
+  add_index "troubles", ["city_id"], name: "index_troubles_on_city_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider"

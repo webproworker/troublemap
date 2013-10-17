@@ -19,7 +19,8 @@ class TroublesController < ApplicationController
   end
   
   def create
-    @trouble = Trouble.new(params[:trouble].permit(:name, :city, :location, :description, :latitude, :longitude, :address))
+
+    @trouble = Trouble.new(params[:trouble].permit(:name, :location, :description, :latitude, :longitude, :address, :city_id))
     if @trouble.save
       redirect_to @trouble
     else
@@ -32,11 +33,6 @@ class TroublesController < ApplicationController
     @json = @trouble.to_gmaps4rails
   end
 
-  def city
-    @troubles = Trouble.all
-    @city = Trouble.find(params[:id]).city
-  end
-
   def edit
     @trouble = Trouble.find(params[:id])
   end
@@ -44,7 +40,7 @@ class TroublesController < ApplicationController
   def update
     @trouble = Trouble.find(params[:id])
 
-    if @trouble.update(params[:trouble].permit(:name, :city, :location, :description, :latitude, :longitude, :address))
+    if @trouble.update(params[:trouble].permit(:name, :location, :description, :latitude, :longitude, :address, :city_id))
       redirect_to @trouble
     else
       render 'edit'
