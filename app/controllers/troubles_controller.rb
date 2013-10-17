@@ -33,11 +33,6 @@ class TroublesController < ApplicationController
     @json = @trouble.to_gmaps4rails
   end
 
-  # def city
-  #   @troubles = Trouble.all
-  #   @city = Trouble.find(params[:id]).city
-  # end
-
   def edit
     @trouble = Trouble.find(params[:id])
   end

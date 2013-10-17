@@ -14,8 +14,9 @@ class CitiesController < ApplicationController
   end
 
   def show
-    @city = City.find(params[:id])
-    # @city = City.find_by_permalink(params[:id])
+    @city = City.find_by_param(params[:id])
+    @troubles = Trouble.where(city_id: @city.id)
+    @json = @troubles.to_gmaps4rails
   end
 
   def index

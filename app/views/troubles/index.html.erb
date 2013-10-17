@@ -1,12 +1,9 @@
 <h1>Listing every trouble in the country</h1>
 
-<%= link_to 'Add a new trouble', new_trouble_path(@trouble) %> |
-<%= link_to 'Homepage', root_path %>
-
 <% @troubles.each do |trouble| %>
   <div>
     <h3> <%= link_to trouble.name, trouble_path(trouble) %> </h3>
-    <strong> City: </strong> <br/>
+    <strong> City: </strong> <%= link_to trouble.city.name, trouble.city %> <br/>
     <strong> Location: </strong> <%= trouble.location %> <br/>
     <strong> Description: </strong> <%= trouble.description %> <br/>
     <strong> <%= link_to 'Edit', edit_trouble_path(trouble) %></strong> |

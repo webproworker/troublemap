@@ -1,4 +1,17 @@
 <h2><%= @city.name %></h2>
 
+<%= gmaps(:map_options => { :raw => "{minZoom: 3}"},
+          :markers => {"data" => @json}) %>
+<%= yield :scripts %>
+
+<% @troubles.each do |trouble| %>
+  <h3> <%= link_to trouble.name, trouble_path(trouble) %> </h3>
+  <strong> City: </strong> <%= trouble.city.name %> <br/>
+  <strong> Location: </strong> <%= trouble.location %> <br/>
+  <strong> Description: </strong> <%= trouble.description %> <br/>
+  <strong> <%= link_to 'Edit', edit_trouble_path(trouble) %></strong> |
+  <strong> <%= link_to 'Delete', trouble_path(trouble), method: :delete, data: {confirm: 'Are you sure?'} %> </strong>
+  <hr />
+<% end %>
+
 <%= link_to "Back to cities list", cities_path %> <br/>
-<strong> <%= link_to "Add city", new_city_path %> </strong>
