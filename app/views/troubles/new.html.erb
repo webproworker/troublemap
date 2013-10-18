@@ -30,8 +30,7 @@
   <%= f.label :address %>
   <%= f.text_field :address %> <br/>
 
-  <%= f.label :city_id %>
-  <%= f.text_field :city_id %> <br/>
+  <%= f.collection_select :city_id, City.order(:name),:id, :name, include_blank: true %>
 
   <%= f.submit %>
 <% end %>

@@ -19,7 +19,6 @@ class TroublesController < ApplicationController
   end
   
   def create
-
     @trouble = Trouble.new(params[:trouble].permit(:name, :location, :description, :latitude, :longitude, :address, :city_id))
     if @trouble.save
       redirect_to @trouble

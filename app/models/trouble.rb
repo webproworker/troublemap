@@ -1,6 +1,7 @@
 class Trouble < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   validates :name, presence:true, length:{ minimum: 3 }
+  belongs_to :city
 
   acts_as_gmappable
 
@@ -10,6 +11,4 @@ class Trouble < ActiveRecord::Base
     "#{address}"
   end
 
-  belongs_to :city
-  
 end
