@@ -1,6 +1,6 @@
 class Trouble < ActiveRecord::Base
   has_many :comments, dependent: :destroy
-  validates :name, presence:true, length:{ minimum: 3 }
+  # validates :name, presence:true, length:{ minimum: 3 }
   belongs_to :city
 
   has_attached_file :photo, 
@@ -18,7 +18,7 @@ class Trouble < ActiveRecord::Base
   def gmaps4rails_address
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
   # DON'T FORGET to place an address field too
-    "#{address}"
+    "#{city.name}, #{address}"
   end
 
 end
