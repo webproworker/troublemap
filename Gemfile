@@ -35,12 +35,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# custom gems
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-identity'
 
+gem "paperclip", "~> 3.5.1"
 # Use unicorn as the app server
 # gem 'unicorn'
 

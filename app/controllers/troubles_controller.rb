@@ -19,7 +19,7 @@ class TroublesController < ApplicationController
   end
   
   def create
-    @trouble = Trouble.new(params[:trouble].permit(:name, :location, :description, :latitude, :longitude, :address, :city_id))
+    @trouble = Trouble.new(params[:trouble].permit(:name, :location, :description, :latitude, :longitude, :address, :city_id, :photo))
     if @trouble.save
       redirect_to @trouble
     else
@@ -29,7 +29,12 @@ class TroublesController < ApplicationController
 
   def show
     @trouble = Trouble.find(params[:id])
-    @json = @trouble.to_gmaps4rails
+    # @json = @trouble.to_gmaps4rails
+    @json = @trouble.to_gmaps4rails do |trouble, marker|
+      marker.infowindow render_to_string(:partial => "troubles/single_marker_infowindow", :locals => {:trouble => trouble})
+      marker.title trouble.address
+      marker.json({ :id => trouble.id, :foo => "bar" })
+    end
   end
 
   def edit
@@ -39,7 +44,7 @@ class TroublesController < ApplicationController
   def update
     @trouble = Trouble.find(params[:id])
 
-    if @trouble.update(params[:trouble].permit(:name, :location, :description, :latitude, :longitude, :address, :city_id))
+    if @trouble.update(params[:trouble].permit(:name, :location, :description, :latitude, :longitude, :address, :city_id, :photo))
       redirect_to @trouble
     else
       render 'edit'
