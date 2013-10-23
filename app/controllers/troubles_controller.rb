@@ -16,6 +16,7 @@ class TroublesController < ApplicationController
 
   def new
     @trouble = Trouble.new
+    @json = @trouble.to_gmaps4rails
   end
   
   def create
@@ -39,6 +40,7 @@ class TroublesController < ApplicationController
 
   def edit
     @trouble = Trouble.find(params[:id])
+    @json = @trouble.to_gmaps4rails
   end
 
   def update

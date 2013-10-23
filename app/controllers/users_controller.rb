@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       redirect_to root_url, :notice => "Signed up!"
     else
       render "new"
-    end   
+    end  
   end
 
   private
