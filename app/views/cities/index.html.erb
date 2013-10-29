@@ -1,7 +1,7 @@
-<h2>List of cities</h2>
+<h2>Lista oraselor cu probleme</h2>
 
 <% @cities.each do |city|%> 
   <%= link_to city.name, city_path(city) %> <br/>
 <% end %>
 
-<strong> <%= link_to "Add city", new_city_path %> </strong>
+<strong> <%= link_to "Adauga un oras", new_city_path %> </strong>

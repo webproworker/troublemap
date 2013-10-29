@@ -1,4 +1,4 @@
-<h1>New City</h1>
+<h1>Oras nou</h1>
 
 <%= form_for :city, url: cities_path do |f| %>
   <% if @city.errors.any? %>
@@ -12,12 +12,12 @@
     </div>
   <% end %>
 
-  <%= f.label :name %>
+  <%= f.label :name, "Nume" %>
   <%= f.text_field :name %> <br/>
 
-  <%= f.submit %>
+  <%= f.submit "Adauga" %>
 <% end %>
 
-<%= link_to 'Back', cities_path %>
+<%= link_to 'Inapoi', cities_path %>
 
 <%= yield :scripts %>

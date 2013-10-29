@@ -1,0 +1,12 @@
+Requirements:
+
+- Users can easily find and locate which are the problems in their cities
+- Users should quickly add and report new problems they observe
+- Pictures can be added for a better description of the problem
+- Users can add comments
+- Set the gravity of the problem by votes. Authors and visitors can vote to decide the gravity (with grades from 1 to 5).
+- The application should work on slow computers and be compatible with major browsers
+- The application should work fine and look good on mobile devices as well
+- The interface should be very user friendly, easy to use and intuitive
+- The map should be centered on user's location when he is on the homepage
+- Mayors or other individuals responsible for fixing the problem should be announced via email as soon as it arises (automatic reporting)

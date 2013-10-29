@@ -1,4 +1,4 @@
-<h1>Sign up</h1>
+<h1>Inregistrare</h1>
 
 <%= form_tag "/auth/identity/register" do %>
   <% if @identity && @identity.errors.any? %>
@@ -12,18 +12,18 @@
     </div>
   <% end %>
 
-  <%= label_tag :name %>
+  <%= label_tag :name, 'Nume' %>
   <%= text_field_tag :name, @identity.try(:name) %> <br/>
 
-  <%= label_tag :email %>
+  <%= label_tag :email, 'Email' %>
   <%= text_field_tag :email, @identity.try(:email) %> <br/>
 
-  <%= label_tag :password %>
+  <%= label_tag :password, 'Parola' %>
   <%= password_field_tag :password %> <br/>
 
-  <%= label_tag :password_confirmation %>
+  <%= label_tag :password_confirmation, 'Confirmati parola' %>
   <%= password_field_tag :password_confirmation %> <br/>
 
-  <%= submit_tag "Register" %>
+  <%= submit_tag "Inregistrati-va" %>
 
 <% end %>

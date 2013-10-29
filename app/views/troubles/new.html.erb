@@ -12,25 +12,25 @@
     </div>
   <% end %>
 
-  <%= f.label :name %>
+  <%= f.label :name, 'Nume' %>
   <%= f.text_field :name %> <br/>
 
   <%= f.label :location %>
   <%= f.text_field :location %> <br/>
 
-  <%= f.label :description %>
+  <%= f.label :description, 'Descriere' %>
   <%= f.text_field :description %> <br/>
 
-  <%= f.label :latitude %>
+  <%= f.label :latitude, 'Latitudine' %>
   <%= f.text_field :latitude %> <br/>
 
-  <%= f.label :longitude %>
+  <%= f.label :longitude, 'Longitudine' %>
   <%= f.text_field :longitude %> <br/>
 
-  <%= f.label :address %>
+  <%= f.label :address, 'Adresa' %>
   <%= f.text_field :address %> <br/>
 
-  <%= f.collection_select :city_id, City.order(:name),:id, :name, :prompt => "Select a city" %>
+  <%= f.collection_select :city_id, City.order(:name),:id, :name, :prompt => "Selecteaza un oras" %>
 
   <%= f.file_field :photo %>
 

@@ -1,9 +1,11 @@
-<h1>Here's your trouble</h1>
-<strong>Name:</strong>
-<%= @trouble.name %> <br/>
+<h1><%= @trouble.name %>, <%= @trouble.city.name %></h1>
 
-<strong>City:</strong>
-<%= link_to @trouble.city.name, @trouble.city %> <br/>
+
+<!-- <strong>lat:</strong> -->
+<%#= number_with_precision(@trouble.latitude, :precision => 14) %> <br/>
+
+<!-- <strong>long:</strong> -->
+<%#= number_with_precision(@trouble.longitude, :precision => 14) %> <br/>
 
 <strong>Location:</strong>
 <%= @trouble.location %> <br/>
@@ -21,9 +23,12 @@
 <strong> <%= link_to 'Back to the trouble list', troubles_path %> </strong> |
 <strong> <%= link_to 'Edit', edit_trouble_path(@trouble) %></strong>
 
-<%= gmaps(:map_options => { :raw => "{minZoom: 3}"},
+<%= gmaps(:map_options => { :raw => "{minZoom: 2}"},
           :markers => {"data" => @json}) %>
 <%= yield :scripts %>
+
+
+<%= link_to "Vezi toate problemele din #{@trouble.city.name}", @trouble.city  %> <br/>
 
 <% if current_user %>
   <h2>Add a comment</h2>

@@ -11,7 +11,7 @@ class Trouble < ActiveRecord::Base
     :message => "Sunt acceptate doar imagini de maximum 2MB in format .PNG, .JPG, .JPEG, .GIF"
   validates_attachment_size :photo,
     :in => 0.megabytes..2.megabytes,
-    :message => "Dimensiunea imaginii nu trebuie sa depaseasca 2MB"
+    :message => "Dimensiunea imaginii nu trebuie sa depaseasca 2MB."
 
   acts_as_gmappable
 

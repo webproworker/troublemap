@@ -11,13 +11,13 @@
     <strong> City: </strong> <%= trouble.city.name %> <br/>
     <strong> Location: </strong> <%= trouble.location %> <br/>
     <strong> Description: </strong> <%= trouble.description %> <br/>
-    <strong> <%= link_to 'Edit', edit_trouble_path(trouble) %></strong> |
-    <strong> <%= link_to 'Delete', trouble_path(trouble), method: :delete, data: {confirm: 'Are you sure?'} %> </strong>
+    <strong> <%= link_to 'Editeaza', edit_trouble_path(trouble) %></strong> |
+    <strong> <%= link_to 'Sterge', trouble_path(trouble), method: :delete, data: {confirm: 'Esti sigur ca vrei sa stergi aceasta problema?'} %> </strong>
     <hr />
   <% end %>
 
 <% else %>
 
-No problems in this city. Awesome! Or you can add one on the <%=link_to "add trouble", new_trouble_path %> page.
+Momentan, nu a fost raportata nicio problema in acest oras. Presupunem ca locuitorii sunt destul de fericiti! In caz contrar, va sugeram <%=link_to "sa raportati problemele", new_trouble_path %> pe care le cunoasteti.
 
 <% end %>

@@ -1,5 +1,5 @@
-<h1>Hello everyone! Here we will have the trouble map.</h1>
-<%= link_to "List of troubles in the city", controller: "troubles" %>
+<h1>Site smecher</h1>
+<%= link_to "Lista problemelor din toata tara", controller: "troubles" %>
 
 <%= gmaps(:markers => {"data" => @jsonAll},
           :map_options => { :raw => "{scrollwheel: false}", :container_class => "main_map", :detect_location => true, :center_on_user => true, :zoom => 8, "auto_zoom" => false}

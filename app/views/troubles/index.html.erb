@@ -1,13 +1,13 @@
-<h1>Listing every trouble in the country</h1>
+<h1>Lista de probleme din intreaga tara</h1>
 
 <% @troubles.each do |trouble| %>
   <div>
     <h3> <%= link_to trouble.name, trouble_path(trouble) %> </h3>
-    <strong> City: </strong> <%= link_to trouble.city.name, trouble.city %> <br/>
+    <strong> Oras: </strong> <%= link_to trouble.city.name, trouble.city %> <br/>
     <strong> Location: </strong> <%= trouble.location %> <br/>
-    <strong> Description: </strong> <%= trouble.description %> <br/>
-    <strong> <%= link_to 'Edit', edit_trouble_path(trouble) %></strong> |
-    <strong> <%= link_to 'Delete', trouble_path(trouble), method: :delete, data: {confirm: 'Are you sure?'} %> </strong>
+    <strong> Descriere: </strong> <%= trouble.description %> <br/>
+    <strong> <%= link_to 'Editeaza', edit_trouble_path(trouble) %></strong> |
+    <strong> <%= link_to 'Sterge', trouble_path(trouble), method: :delete, data: {confirm: 'Esti sigur ca vrei sa stergi aceasta problema?'} %> </strong>
     <hr />
   </div>
 <% end %>

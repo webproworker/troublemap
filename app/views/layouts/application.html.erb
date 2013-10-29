@@ -10,28 +10,27 @@
 
 <header>
   <nav>
-    <%= link_to "Home", root_path %> |
-    <%= link_to "All troubles", troubles_path %> |
-    <%= link_to "Cities", cities_path %> |
-    <%= link_to "Add city", new_city_path %> |
-    <%= link_to "Add trouble", new_trouble_path %> |
+    <%= link_to "Acasa", root_path %> |
+    <%= link_to "Toate problemele", troubles_path %> |
+    <%= link_to "Orase", cities_path %> |
+    <%= link_to "Adauga oras", new_city_path %> |
+    <%= link_to "Adauga problema", new_trouble_path %> |
   </nav>
   <div class="user_login_area">
     <%if current_user %>
       Welcome <%= current_user.name %>!
-      <%= link_to "Sign out", signout_path %>
+      <%= link_to "Deconectare", signout_path %>
     <% else %>
-      <%= link_to "sign in with twitter", "/auth/twitter" %> |
-      <%= link_to "sign in with facebook", "/auth/facebook" %> |
-      <%= link_to "Create an account", new_identity_path %> or
-      <!-- <%= link_to "Log in", "/auth/identity" %> -->
+      <%= link_to "Autentificare cu twitter", "/auth/twitter" %> |
+      <%= link_to "Autentificare cu facebook", "/auth/facebook" %> |
+      <%= link_to "Inregistrare", new_identity_path %> sau
       <div>
         <%= form_tag "/auth/identity/callback" do %>
           <%= label_tag :auth_key, "Email" %>
           <%= text_field_tag :auth_key %> <br/>
-          <%= label_tag :password %>
+          <%= label_tag :password, "Parola" %>
           <%= text_field_tag :password %> <br/>
-          <%= submit_tag "Log in" %>
+          <%= submit_tag "Conectare" %>
         <% end %>
       </div>
     <% end %>

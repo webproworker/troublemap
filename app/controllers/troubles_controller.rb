@@ -30,7 +30,6 @@ class TroublesController < ApplicationController
 
   def show
     @trouble = Trouble.find(params[:id])
-    # @json = @trouble.to_gmaps4rails
     @json = @trouble.to_gmaps4rails do |trouble, marker|
       marker.infowindow render_to_string(:partial => "troubles/single_marker_infowindow", :locals => {:trouble => trouble})
       marker.title trouble.address
