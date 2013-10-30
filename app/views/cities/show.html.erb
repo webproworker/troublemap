@@ -3,7 +3,8 @@
 <%if @troubles.first %>
 
   <%= gmaps(:map_options => { :raw => "{minZoom: 3}"},
-            :markers => {"data" => @json}) %>
+            :markers => {"data" => @json}
+            ) %>
   <%= yield :scripts %>
 
   <% @troubles.each do |trouble| %>

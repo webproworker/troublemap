@@ -1,7 +1,9 @@
 <h1>Site smecher</h1>
 <%= link_to "Lista problemelor din toata tara", controller: "troubles" %>
 
-<%= gmaps(:markers => {"data" => @jsonAll},
+<%= gmaps(:markers => {"data" => @jsonAll,
+                      "options" => {"max_random_distance" => 10, "randomize" => false, "do_clustering" => true}
+                      },
           :map_options => { :raw => "{scrollwheel: false}", :container_class => "main_map", :detect_location => true, :center_on_user => true, :zoom => 8, "auto_zoom" => false}
           )%>
 <%= yield :scripts %>

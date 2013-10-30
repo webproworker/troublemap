@@ -24,7 +24,8 @@
 <strong> <%= link_to 'Edit', edit_trouble_path(@trouble) %></strong>
 
 <%= gmaps(:map_options => { :raw => "{minZoom: 2}"},
-          :markers => {"data" => @json}) %>
+          :markers => {"data" => @json}
+          ) %>
 <%= yield :scripts %>
 
 
