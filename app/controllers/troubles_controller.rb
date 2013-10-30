@@ -21,8 +21,10 @@ class TroublesController < ApplicationController
   
   def create
     @trouble = Trouble.new(params[:trouble].permit(:name, :location, :description, :latitude, :longitude, :address, :city_id, :photo))
+    # mail = 'alex@nagemus.com'
     if @trouble.save
       redirect_to @trouble
+      OfficialMailer.problem_email(@trouble, 'alex@nagemus.com').deliver
     else
       render 'new'
     end
