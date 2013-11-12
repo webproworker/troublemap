@@ -1,0 +1,213 @@
+Requirements:
+
+- Users can easily find and locate which are the problems in their cities
+- The application needs to allow users without much experience to use it without hassle
+- Users should quickly add and report new problems they observe
+- Pictures can be added for a better description of the problem
+- Users can add comments
+- Set the gravity of the problem by votes. Authors and visitors can vote to decide the gravity (with grades from 1 to 5).
+- The application should work on slow computers and be compatible with major browsers
+- The application should work fine and look good on mobile devices as well
+- The interface should be very user friendly, easy to use and intuitive
+- The map should be centered on user's location when he is on the homepage
+- Mayors or other individuals responsible for fixing the problem should be announced via email as soon as it arises (automatic reporting)
+
+
+http://stackoverflow.com/questions/171653/examples-of-requirement-documents
+http://en.wikipedia.org/wiki/Software_Requirements_Specification
+
+== I. Introduction ==
+  1. Purpose
+  The purpose of this document is to present a thorough description of the project entitled eProblema. It will explain everything that is needed to understand the purpose of the application, what it can do, its features and also the constraints under which the application should operate.
+  
+  The document is written for both developers and stakeholders with no technical skills.
+
+  2. Scope of Project
+
+  eProblema is a web based application meant to come as a solution to reporting the problems found in the surrounding environment. It currently targets Romania which is a developing country, but can also be used in any country with no major changes.
+
+  eProblema is meant to be a sort of "bridge" between the citizens and the mayors, local councilors etc. Citizens, whether they have or not a lot of experience with the Internet or the computer, will be able to mention the problems they see in their city, mark it on the map and even upload a picture with it. Then, based on the type of the problem, an email about it will be automatically sent to local councilors or officials responsible for fixing the problem.
+
+  3. Definitions
+  In this document I am going to use abbreviated or technical words for describing the system or how it works. Forwards you will find the list of these words and their meaning.
+  MVC - Model View Controller, an architecture for building interactive applications that lies at the heart of the Rails framework. http://oreilly.com/ruby/excerpts/ruby-learning-rails/ruby-glossary.html
+  RoR - Ruby on Rails, the web programming language that has been used to develop the application. It's a framework based on Ruby, a very powerful programming language.
+  app - Application
+  PC - Personal computer
+  UI - User interface, a term used to describe the interface which is used by users to interact with the application
+  UX - User experience, a term used to describe the experience a user gets when using the interface of the application
+  Database - The collection of all the information needed for this application (problems, cities, officials etc)
+  Official - Public body or authority that has the responsibilities in a city
+  User - The person who uses the site (citizen) as in looking for information or entering new information
+  Issue - Reported problem
+
+
+  4. References
+  29148-2011 - Systems and software engineering -- Life cycle processes --Requirements engineering. 2011.
+
+  5. Overview of Document
+  The next chapter (Overall Description) offers functionality overview. It not only describes which are the informal requirements, but also sets a context for the following chapter about technical requirements.
+
+  The third section (Requirements Specification) describes all the details of application functionality using technical terms as it is written mainly for developers.
+
+  The role of these two sections of the document is to describe the entire application but one uses technical terms, addressing to developers and the other one addresses to a different audience that don't have a technical background.
+
+== II. Overall description ==
+  1. System Environment
+  <insert drawing>
+  
+  eProblema has a single cooperating system and 3 actors: the User, Official and Admin. Every one of these actors interacts with the system through the Internet by simply using a browser of his choice. Users can check for new information and eventually subscribe to find out about new problems in their cities, but they can also input data. Officials get instant emails about problems found by citizens in their city. The administrator has access to the entire system and can add new cities and officials.
+
+  2. Functional Requirements Specification
+  This subchapter will outline the use cases separately for each actor.
+
+  A. Visitor Use Case
+  Use case: Check for problems
+  Diagram: <insert drawing>
+  Brief description: 
+  The visitor accesses the online application using his browser of choice and checks to see which are the problems reported in his city.
+  Step by step description:
+  Before the following steps take place, the user is already connected to the application. After connecting, the system centers the map on user's location.
+
+  1) The system displays the markers that indicate the location of problems in his city.
+  2) The User clicks on one of the markers
+  3) The system displays summary information about that problem (title, description, one picture)
+  4) The User chooses to see more details about the problem
+  5) The system displays the individual page of the problem where the entire description, comments and more pictures are displayed.
+
+  Use case: Subscribe to problems in his city
+  Diagram: <insert drawing>
+  Brief description:
+  The user adds new problems he saw in his city
+  Step by step description:
+  Before the following steps take place, the user is already connected to the application.
+
+  1) The User clicks the subscribe button
+  2) The system displays the email input dialog
+  3) The User enters his email address
+  4) The system stores his email address in the database and will send the user an email whenever a new issue in that city gets reported
+
+  Use case: Vote problems based on their gravity
+  Diagram: <insert here>
+  Brief description:
+  The user votes the problems in his city based on how serious or bad they are, with 1 to 5 stars
+  Step by step description:
+  Before the following steps take place, the user is already connected to the application. 
+
+  1) He clicks his city listings page (or uses the map directly, which is centered on his area)
+  2) Gives a vote, based on how serious the problem is.
+
+  Use case: Comment on problems
+  Diagram: <insert here>
+  Brief description:
+  The visitor comments on certain problems. This might be to tell his opinion, share his experience with that particular problem or he can write anything that he might find useful for the community.
+  Step by step description:
+  Before the following steps take place, the user is already connected to the application. 
+
+  1) User can click on a problem marker displayed on the map OR go to his city listings page and click one of those issues
+  2) Scroll to the comments area
+  3) Login with his facebook account
+  4) Write a comment
+  5) Submit his comment
+
+  B. Administrator Use Case
+  Use case: Add official
+  Diagram: <insert here>
+  Brief description:
+  The administrator enters new details needed for contacting officials regarding the problems reported in cities. 
+  Step by step description:
+  Before the following steps take place, the admin is already connected to the application and logged in.
+
+  1) He clicks on the control panel link
+  2) The system returns the actions he can take
+  3) Admin clicks on the officials link
+  4) Admin clicks "Add new" for adding a new official and enters the information
+  5) The system sends a secret key to the specified email
+
+  Use case: Update official
+  Diagram: <insert here>
+  Brief description:
+  The administrator updates existing details of the officials needed for contacting them regarding the problems reported in cities. 
+  Step by step description:
+  Before the following steps take place, the admin is already connected to the application and logged in.
+
+  1) He clicks on the control panel link
+  2) The system returns the actions he can take
+  3) Admin clicks on the officials link
+  4) Admin clicks "Update" for updating an official's status or name and submits
+  5) The system updates the database
+
+  Use case: Delete a problem
+  Diagram: <insert here>
+  Brief description:
+  The admin deletes a problem from the database.
+  Step by step description:
+  Before the following steps take place, the admin is already connected to the application and logged in.
+
+  1) Admin goes to the page of the issue that he wants to delete
+  2) Admin clicks on "Delete" button
+  3) The system asks for confirmation
+  4) Admin accepts
+  5) System deletes the problem
+
+  Use case: Ban a user
+  Diagram: <insert here>
+  Brief description:
+  If some users abuse the system or constantly publish bad comments, the admin can remove his account.
+  Step by step description:
+  Before the following steps take place, the admin is already connected to the application and logged in.
+
+  1) Admin clicks on the control panel link
+  2) The system returns the actions he can take
+  3) Admin clicks on the users link
+  4) The system returns the list of users
+  5) Admin clicks the ban button
+  6) The system updates the database
+
+  C. Official Use Case
+  Use case: Create account
+  Diagram: <insert here>
+  Brief description:
+  Officials create an account using an email address.
+  Step by step description:
+  Before the following steps take place, the official is already connected to the application.
+
+  1) The official goes to the register page
+  2) The system returns the page asking for the needed information
+  3) The official submits the needed information (email, his name or the name of the institution he represents and, optionally, a secret code)
+  4) The system updates the database accordingly. The admin will then need to verify the account manually after the official verifies the email.
+
+  Use case: Make a comment
+  Diagram: <insert here>
+  Brief description:
+  Officials create an account using an email address.
+  Step by step description:
+  Before the following steps take place, the official is already connected to the application.
+
+  1) The official visits the problem he is interested in
+  2) He writes a comment and hits the submit button.
+  3) The system adds the new comment in the database and displays it in a different style from the other comments so it can stand out.
+
+  Use case: Mark problem as fixed
+  Diagram: <insert here>
+  Brief description:
+  Official can mark a problem as fixed if the municipality has taken care of it.
+  Step by step description:
+  Before the following steps take place, the official is already connected to the application.
+
+  1) The official visits the problem he is interested in
+  2) He clicks the "Fixed" button which is only displayed to those of his rank
+  3) The system will mark this problem in a special way and keep it open for comments and votes for another couple of days
+
+  3. User Characteristics
+  Visitors and officials are expected to have a minimum of Internet and computer experience as in knowing how to use his or her equipment to interact with the application. The user interface is going to be very easy to understand and usable by anyone.
+
+  4. Non-functional requirements
+  The application needs to be fast enough to provide users with a pleasant experience and allow them to input and get the information quickly and easily. It should be as fast as possible so users don't have to wait for the application to load.
+  
+  Also the application needs to perform well. So the stored files need to be of small sizes and compressed - for example stylesheets and javascript files. Also the code should be as optimized as possible. This has benefits not only on the page loading speed (therefore improving the user experience as wel), but also on the server stress. Small files and optimized code leads to less need for server maintenance and costs.
+
+== III. Specific requirements ==
+  1. External Interface Requirements
+  For working properly, eProblema needs to be loaded in a modern browser (anything from Mozilla Firefox to Chrome, Opera and even IE 9+).
+  The system makes use of the e-mail communcation interface. E-mails will be used for confirming the accounts users and officials create and also for letting officials know about the problems that exist in their city. E-mails can be sent in both text or HTML format.

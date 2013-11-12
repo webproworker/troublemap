@@ -3,7 +3,7 @@
 <%= form_for :trouble, url: troubles_path, :html => { :multipart => true } do |f| %>
   <% if @trouble.errors.any? %>
     <div id="errorExplanation">
-      <h2><%= pluralize(@trouble.errors.count, "error") %> prohibited this post from being saved</h2>
+      <h2><%= pluralize(@trouble.errors.count, "eroare") %> prohibited this post from being saved</h2>
       <ul>
         <% @trouble.errors.full_messages.each do |msg| %>
           <li> <%= msg %> </li>
