@@ -211,3 +211,8 @@ http://en.wikipedia.org/wiki/Software_Requirements_Specification
   1. External Interface Requirements
   For working properly, eProblema needs to be loaded in a modern browser (anything from Mozilla Firefox to Chrome, Opera and even IE 9+).
   The system makes use of the e-mail communcation interface. E-mails will be used for confirming the accounts users and officials create and also for letting officials know about the problems that exist in their city. E-mails can be sent in both text or HTML format.
+  2. Functional requirements
+
+  1) Add Problem
+  Use case name: Add problem
+  Main path: The visitor chooses 
