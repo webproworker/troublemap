@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030105011) do
+ActiveRecord::Schema.define(version: 20140624102515) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
   create_table "comments", force: true do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20131030105011) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "author"
   end
 
   add_index "troubles", ["city_id"], name: "index_troubles_on_city_id", using: :btree
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 20131030105011) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "mod"
   end
 
 end

@@ -18,11 +18,20 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+# gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+gem 'font-awesome-rails', '~> 4.1.0.0'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
 # Use gmaps4rails
-gem 'gmaps4rails'
+gem 'gmaps4rails', '1.5.6'
+
+
+# gem 'geocoder'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
@@ -33,6 +42,10 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :development, :test do
+  gem 'railroady'
 end
 
 # custom gems

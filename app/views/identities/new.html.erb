@@ -1,29 +1,53 @@
-<h1>Inregistrare</h1>
+<div class="container new-account-container">
 
-<%= form_tag "/auth/identity/register" do %>
-  <% if @identity && @identity.errors.any? %>
-    <div class="error_messages">
-      <h3><%= pluralize(@identity.errors.count, "error") %></h3>
-      <ul>
-        <% @identity.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li> 
-        <% end %>
-      </ul>
+  <h1>Creeaza un cont eProblema.ro</h1>
+
+  <%= form_tag "/auth/identity/register", class: "form-horizontal" do %>
+    <% if @identity && @identity.errors.any? %>
+      <div class="error_messages">
+        <h3><%= pluralize(@identity.errors.count, "error") %></h3>
+        <ul>
+          <% @identity.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li> 
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= label_tag :name, 'Nume', class: "col-md-3 control-label" %>
+      <div class="col-md-9">
+        <%= text_field_tag :name, @identity.try(:name), class: "form-control", placeholder: "Nume" %>
+      </div>
     </div>
+
+    <div class="form-group">
+      <%= label_tag :email, 'Email', class: "col-md-3 control-label" %>
+      <div class="col-md-9">
+        <%= text_field_tag :email, @identity.try(:email), class: "form-control", placeholder: "email@example.com" %> 
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :password, 'Parola', class: "col-md-3 control-label" %>
+      <div class="col-md-9">
+        <%= password_field_tag :password, nil, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :password_confirmation, 'Confirma parola', class: "col-md-3 control-label" %>
+      <div class="col-md-9">
+        <%= password_field_tag :password_confirmation, nil, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-md-offset-3 col-md-9">
+      <%= button_tag(:class => "btn btn-primary btn-block") do %>
+        <i class="fa fa-sign-in"></i> Inregistreaza-te
+      <% end %>
+    </div>
+
+    <br>
   <% end %>
-
-  <%= label_tag :name, 'Nume' %>
-  <%= text_field_tag :name, @identity.try(:name) %> <br/>
-
-  <%= label_tag :email, 'Email' %>
-  <%= text_field_tag :email, @identity.try(:email) %> <br/>
-
-  <%= label_tag :password, 'Parola' %>
-  <%= password_field_tag :password %> <br/>
-
-  <%= label_tag :password_confirmation, 'Confirmati parola' %>
-  <%= password_field_tag :password_confirmation %> <br/>
-
-  <%= submit_tag "Inregistrati-va" %>
-
-<% end %>
+</div>

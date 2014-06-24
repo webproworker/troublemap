@@ -1,47 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Troublemap</title>
+  <title>eProblema</title>
   <%= stylesheet_link_tag "application", media: "all" %>
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class='<%= is_active?("frontpage") %>'>
+<div class="container-fluid">
+  <header>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container-fluid">
+        <!-- <div class="navbar-header">
+        </div> -->
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to '<i class="fa fa-home"></i> Acasa'.html_safe, root_path %>
+            </li>
+            <!-- <li><%= link_to "Toate sesizarile", troubles_path %></li> -->
+            <li><%= link_to "Orase", cities_path %></li>
+            <li><%= link_to "Sesizarile din tara", controller: "troubles" %></li>
+            <li><%= link_to "Adauga oras", new_city_path %></li>
+            <li><%= link_to "Adauga problema", new_trouble_path %></li>
+          </ul>
 
-<header>
-  <nav>
-    <%= link_to "Acasa", root_path %> |
-    <%= link_to "Toate problemele", troubles_path %> |
-    <%= link_to "Orase", cities_path %> |
-    <%= link_to "Adauga oras", new_city_path %> |
-    <%= link_to "Adauga problema", new_trouble_path %> |
-  </nav>
-  <div class="user_login_area">
-    <%if current_user %>
-      Welcome <%= current_user.name %>!
-      <%= link_to "Deconectare", signout_path %>
-    <% else %>
-      <%= link_to "Autentificare cu twitter", "/auth/twitter" %> |
-      <%= link_to "Autentificare cu facebook", "/auth/facebook" %> |
-      <%= link_to "Inregistrare", new_identity_path %> sau
-      <div>
-        <%= form_tag "/auth/identity/callback" do %>
-          <%= label_tag :auth_key, "Email" %>
-          <%= text_field_tag :auth_key %> <br/>
-          <%= label_tag :password, "Parola" %>
-          <%= text_field_tag :password %> <br/>
-          <%= submit_tag "Conectare" %>
+          <%if current_user %>
+            Welcome <%= current_user.name %>!
+            <%= link_to "Deconectare", signout_path %>
+          <% else %>
+            <ul class="nav navbar-nav pull-right">
+              <li class="dropdown pull-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-sign-in"></i>
+                  Login <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" data-toggle="modal" data-target="#userPassInput">User & Parola</a></li>
+                  <li><%= link_to "Twitter", "/auth/twitter" %></li>
+                  <li><%= link_to "Facebook", "/auth/facebook" %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Inregistrare", new_identity_path %></li>
+                </ul>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+
+  <%= yield %>
+
+</div>
+
+<div class="modal fade" id="userPassInput" tabindex="-1" role="dialog" aria-labelledby="userPassInput" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header tc">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Introdu datele de autentificare</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag "/auth/identity/callback", :class => "form-horizontal" do %>
+          <div class="form-group">
+            <%= label_tag :auth_key, "Email", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= text_field_tag :auth_key, nil, class: "form-control", placeholder: "mail@exemplu.com" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= label_tag :password, "Parola", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= text_field_tag :password, nil, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-offset-2">
+            <%= button_tag(:class => "btn btn-primary") do %>
+              <i class="fa fa-sign-in"></i> Conectare
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-</header>
-
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
-
-<%= yield %>
-
+</div>
 </body>
 </html>

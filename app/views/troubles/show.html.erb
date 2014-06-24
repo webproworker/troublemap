@@ -1,42 +1,50 @@
-<h1><%= @trouble.name %>, <%= @trouble.city.name %></h1>
+<div class="container">
+  <div class="pull-right">
+    <%= link_to @trouble.city do %>
+      Vezi toate sesizarile din <%= @trouble.city.name %>
+      <i class="fa fa-angle-double-right"></i>
+    <% end %>
+  </div>
+  <h1><%= @trouble.name %>, <%= @trouble.city.name %></h1>
+  <hr>
 
+  <!-- <strong>lat:</strong> -->
+  <%#= number_with_precision(@trouble.latitude, :precision => 14) %> 
 
-<!-- <strong>lat:</strong> -->
-<%#= number_with_precision(@trouble.latitude, :precision => 14) %> <br/>
+  <!-- <strong>long:</strong> -->
+  <%#= number_with_precision(@trouble.longitude, :precision => 14) %>
 
-<!-- <strong>long:</strong> -->
-<%#= number_with_precision(@trouble.longitude, :precision => 14) %> <br/>
+  <strong>Location:</strong>
+  <%= @trouble.location %> <br/>
 
-<strong>Location:</strong>
-<%= @trouble.location %> <br/>
+  <strong>Description:</strong>
+  <%= @trouble.description %> <br/>
 
-<strong>Description:</strong>
-<%= @trouble.description %> <br/>
+  <strong>Address:</strong>
+  <%= @trouble.address %> <br/>
 
-<strong>Address:</strong>
-<%= @trouble.address %> <br/>
+  <% if @trouble.photo.url != "Missing" %>
+    <%= link_to image_tag(@trouble.photo.url(:medium)), @trouble.photo.url %> <br/>
+  <% end %>
 
-<% if @trouble.photo.url != "Missing" %>
-  <%= link_to image_tag(@trouble.photo.url(:medium)), @trouble.photo.url %> <br/>
-<% end %>
+  <strong> <%= link_to 'Edit', edit_trouble_path(@trouble) %></strong>
 
-<strong> <%= link_to 'Back to the trouble list', troubles_path %> </strong> |
-<strong> <%= link_to 'Edit', edit_trouble_path(@trouble) %></strong>
+</div>
 
-<%= gmaps(:map_options => { :raw => "{minZoom: 2}"},
+<%= gmaps(:map_options => { :raw => "{maxZoom: 12}", :container_class => "city-map"},
           :markers => {"data" => @json}
           ) %>
 <%= yield :scripts %>
 
+<div class="container">
 
-<%= link_to "Vezi toate problemele din #{@trouble.city.name}", @trouble.city  %> <br/>
+  <% if current_user %>
+    <h2>Add a comment</h2>
+    <%= render 'comments/form' %>
+  <% else %>
+    <p>Este nevoie sa te loghezi (sau <%= link_to "sa te inregistrezi", "/auth/identity/register" %> daca nu ai deja un cont), pentru a putea posta comentarii.</p>
+  <% end %>
 
-<% if current_user %>
-  <h2>Add a comment</h2>
-  <%= render 'comments/form' %>
-<% else %>
-  <p>You need to log in (or <%= link_to "register", "/auth/identity/register" %> if you don't have an account), in order to post comments.</p>
-<% end %>
-
-<h2>Comments</h2>
-<%= render @trouble.comments %>
+  <h2>Comments</h2>
+  <%= render @trouble.comments %>
+</div>

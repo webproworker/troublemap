@@ -1,24 +1,28 @@
-<h2><%= @city.name %></h2>
+<div class="container">
+  <div class="city-troubles-title tc">
+    <h1>Sesizarile din orasul <%= @city.name %></h1>
+  </div>
 
-<%if @troubles.first %>
+  <%if @troubles.first %>
+</div>
+    <%= gmaps(:map_options => { :raw => "{minZoom: 3}", :container_class => "city-map"},
+              :markers => {"data" => @json}
+              ) %>
+    <%= yield :scripts %>
+<div class="container">
+    <% @troubles.each do |trouble| %>
+      <h3> <%= link_to trouble.name, trouble_path(trouble) %> </h3>
+      <!-- <strong> City: </strong> <%= trouble.city.name %> <br/> -->
+      <strong> Location: </strong> <%= trouble.location %> <br/>
+      <strong> Description: </strong> <%= trouble.description %> <br/>
+      <strong> <%= link_to 'Editeaza', edit_trouble_path(trouble) %></strong> |
+      <strong> <%= link_to 'Sterge', trouble_path(trouble), method: :delete, data: {confirm: 'Esti sigur ca vrei sa stergi aceasta problema?'} %> </strong>
+      <hr />
+    <% end %>
 
-  <%= gmaps(:map_options => { :raw => "{minZoom: 3}"},
-            :markers => {"data" => @json}
-            ) %>
-  <%= yield :scripts %>
+  <% else %>
 
-  <% @troubles.each do |trouble| %>
-    <h3> <%= link_to trouble.name, trouble_path(trouble) %> </h3>
-    <strong> City: </strong> <%= trouble.city.name %> <br/>
-    <strong> Location: </strong> <%= trouble.location %> <br/>
-    <strong> Description: </strong> <%= trouble.description %> <br/>
-    <strong> <%= link_to 'Editeaza', edit_trouble_path(trouble) %></strong> |
-    <strong> <%= link_to 'Sterge', trouble_path(trouble), method: :delete, data: {confirm: 'Esti sigur ca vrei sa stergi aceasta problema?'} %> </strong>
-    <hr />
+  Momentan, nu a fost raportata nicio problema in acest oras. Presupunem ca locuitorii sunt destul de fericiti! In caz contrar, va sugeram <%=link_to "sa raportati problemele", new_trouble_path %> pe care le cunoasteti.
+
   <% end %>
-
-<% else %>
-
-Momentan, nu a fost raportata nicio problema in acest oras. Presupunem ca locuitorii sunt destul de fericiti! In caz contrar, va sugeram <%=link_to "sa raportati problemele", new_trouble_path %> pe care le cunoasteti.
-
-<% end %>
+</div>

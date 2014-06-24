@@ -1,9 +1,16 @@
-<h1>Site smecher</h1>
-<%= link_to "Lista problemelor din toata tara", controller: "troubles" %>
+<section class="main tc clearfix">
 
-<%= gmaps(:markers => {"data" => @jsonAll,
-                      "options" => {"max_random_distance" => 10, "randomize" => false, "do_clustering" => true}
-                      },
-          :map_options => { :raw => "{scrollwheel: false}", :container_class => "main_map", :detect_location => true, :center_on_user => true, :zoom => 8, "auto_zoom" => false}
-          )%>
+  <h1 class="main-title">eProblema.ro</h1>
+  <h2 class="tagline">
+    Site-ul unde depui sesizari rapid si usor!
+  </h2>
+  <div class="col-md-6">
+    <%= link_to '<i class="fa fa-exclamation-circle"></i> Formuleaza o sesizare'.html_safe, new_trouble_path , class: 'btn btn-success btn-block btn-lg' %>
+  </div>
+  <div class="col-md-6">
+    <%= link_to '<i class="fa fa-list"></i> Sesizarile din orasul tau'.html_safe, cities_path, class: "btn btn-success btn-block btn-lg" %>
+  </div>
+
+</section>
+
 <%= yield :scripts %>

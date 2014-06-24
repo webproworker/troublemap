@@ -1,23 +1,42 @@
-<h1>Oras nou</h1>
+<div class="container">
+  <h1>Oras nou</h1>
+  <hr>
 
-<%= form_for :city, url: cities_path do |f| %>
-  <% if @city.errors.any? %>
-    <div id="errorExplanation">
-      <h2><%= pluralize(@city.errors.count, "error") %> prohibited this post from being saved</h2>
-      <ul>
-        <% @city.errors.full_messages.each do |msg| %>
-          <li> <%= msg %> </li>
-        <% end %>
-      </ul>
+  <%= form_for :city, url: cities_path, :html => { :class => "form-horizontal"} do |f| %>
+    <% if @city.errors.any? %>
+      <div id="errorExplanation">
+        <h2><%= pluralize(@city.errors.count, "error") %> prohibited this post from being saved</h2>
+        <ul>
+          <% @city.errors.full_messages.each do |msg| %>
+            <li> <%= msg %> </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, "Nume", class: "col-md-2 control-label" %>
+      <div class="col-md-10">
+        <%= f.text_field :name, class: "form-control", placeholder: "Numele orasului" %>
+      </div>
     </div>
+
+    <div class="form-group">
+      <%= f.label :email, "Email", class: "col-md-2 control-label" %>
+      <div class="col-md-10">
+        <%= f.text_field :email, class: "form-control", placeholder: "Email-ul pentru sesizari" %>
+      </div>
+    </div>
+
+    <div class="col-md-offset-2 col-md-2">
+      <%= button_tag(:class => "btn btn-primary btn-block submit-city") do %>
+       Adauga oras
+      <% end %>
+    </div>
+
   <% end %>
 
-  <%= f.label :name, "Nume" %>
-  <%= f.text_field :name %> <br/>
+  <%#= link_to 'Inapoi la orase', cities_path %>
 
-  <%= f.submit "Adauga" %>
-<% end %>
-
-<%= link_to 'Inapoi', cities_path %>
-
-<%= yield :scripts %>
+  <%= yield :scripts %>
+</div>

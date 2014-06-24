@@ -20,7 +20,7 @@ class CitiesController < ApplicationController
   end
 
   def index
-    @cities = City.all
+    @cities = City.all.order('name')
   end
 
 end

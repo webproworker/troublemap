@@ -1,0 +1,67 @@
+body{
+  font-family: 'Roboto Slab', serif;
+  background: url("http://subtlepatterns.com/patterns/halftone.png") repeat scroll 0% 0% transparent;
+  &.frontpage{
+    background: url("/assets/bg.png") center center;
+    .navbar{
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.navbar{
+  margin-bottom: 0;
+}
+
+.container-fluid{
+  padding: 0;
+}
+
+i{
+  margin-right: 5px;
+}
+
+.main{
+  background: rgb(0,0,0); /*fallback*/
+  background: rgba(0,0,0, 0.7);
+  max-width: 700px;
+  color: white;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 50px;
+  .tagline{
+    font-weight: 100;
+  }
+  a{
+    margin-top: 25px;
+  }
+}
+
+.modal-dialog{
+  width: 350px;
+}
+
+.modal-content{
+  background: #222;
+  color: white;
+  .close{
+    color: white;
+  }
+}
+
+.navbar-epr{
+  background: #F73946;
+  color: white;
+  .navbar-nav{
+    li{
+      a{
+        color: white;
+      }
+    }
+  }
+}
+
+.container{
+  background: #f9f9f9;
+  padding: 20px;
+}
