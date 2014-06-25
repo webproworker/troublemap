@@ -30,6 +30,7 @@ gem 'jquery-rails'
 # Use gmaps4rails
 gem 'gmaps4rails', '1.5.6'
 
+gem 'pg'
 
 # gem 'geocoder'
 
