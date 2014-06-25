@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
@@ -31,6 +32,7 @@ gem 'jquery-rails'
 gem 'gmaps4rails', '1.5.6'
 
 gem 'pg'
+gem 'rails_12factor'
 
 # gem 'geocoder'
 
