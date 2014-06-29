@@ -20,9 +20,10 @@ class TroublesController < ApplicationController
   end
   
   def create
-    @trouble = Trouble.new(params[:trouble].permit(:name, :location, :description, :latitude, :longitude, :address, :city_id, :photo))
+    @trouble = Trouble.new(params[:trouble].permit(:name, :description, :latitude, :longitude, :address, :city_id, :author, :severity, :photo))
     if @trouble.save
-      redirect_to @trouble
+      LeaderMailer.complaint(@trouble).deliver
+      redirect_to @trouble.city
     else
       render 'new'
     end

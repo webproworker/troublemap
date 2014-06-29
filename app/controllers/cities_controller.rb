@@ -5,7 +5,7 @@ class CitiesController < ApplicationController
   end
   
   def create
-    @city = City.new(params[:city].permit(:name))
+    @city = City.new(params[:city].permit(:name, :email))
     if @city.save
       redirect_to @city
     else

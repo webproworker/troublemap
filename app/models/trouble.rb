@@ -1,6 +1,9 @@
 class Trouble < ActiveRecord::Base
   has_many :comments, dependent: :destroy
-  # validates :name, presence:true, length:{ minimum: 3 }
+  validates :name, presence:true, length: { minimum: 2 }
+  validates :description, presence:true
+  validates :author, presence:true, length: {minimum: 4}
+  validates :severity, presence:true
   belongs_to :city
 
   has_attached_file :photo, 

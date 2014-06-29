@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624102515) do
+ActiveRecord::Schema.define(version: 20140629203310) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20140624102515) do
 
   create_table "troubles", force: true do |t|
     t.string   "name"
-    t.text     "location"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -54,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140624102515) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "author"
+    t.string   "severity"
   end
 
   add_index "troubles", ["city_id"], name: "index_troubles_on_city_id", using: :btree

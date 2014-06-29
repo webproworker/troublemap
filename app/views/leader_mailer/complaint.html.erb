@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+      p{
+        margin: 15px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Buna ziua,
+    </p>
+
+    <p>
+      O noua sesizare a fost facuta de catre <%= @trouble.author %> in orasul <%= @trouble.city.name %> prin intermediul site-ului eProblema.ro. Detalii:
+    </p>
+
+    <p>
+      <strong>Nume</strong>: <%= @trouble.name %> <br>
+      <strong>Descriere</strong>: <%= @trouble.description %> <br>
+      <strong>Data raportarii</strong>: <%= @trouble.created_at %> <br>
+      <strong>Locatia exacta(latitudine/longitudine)</strong>: <%= @trouble.latitude %> / <%= @trouble.longitude %> <br>
+      <strong><%= link_to "Link-ul sesizarii cu alte detalii, poze si comentarii", trouble_path(@trouble) %></strong>
+    </p>
+    
+    <p>
+      Va multumim! 
+    </p>
+  </body>
+</html>
