@@ -2,6 +2,12 @@ class TroublesController < ApplicationController
 
   # http_basic_authenticate_with name: "test", password: "parola", except: [:index, :show]
 
+  # before_action :authenticate, only: [:show, :frontpage]
+
+  def authenticate
+    redirect_to(new_identity_path) unless @current_user
+  end
+
   def index
     @troubles = Trouble.all
   end

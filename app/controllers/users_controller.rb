@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_url, :notice => "Contul a fost inregistrat cu succes!"
+      redirect_to :back, :notice => "Contul a fost inregistrat cu succes!"
     else
       render "new"
     end  

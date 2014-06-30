@@ -14,11 +14,14 @@
   <!-- <strong>long:</strong> -->
   <%#= number_with_precision(@trouble.longitude, :precision => 14) %>
 
-  <strong>Description:</strong>
+  <!-- <strong>Address:</strong>
+  <%= @trouble.address %> <br/> -->
+
+  <strong>Descriere:</strong>
   <%= @trouble.description %> <br/>
 
-  <strong>Address:</strong>
-  <%= @trouble.address %> <br/>
+  <strong>Gravitate:</strong>
+  <%= @trouble.severity %> <br/>
 
   <% if @trouble.photo.url != "Missing" %>
     <%= link_to image_tag(@trouble.photo.url(:medium)), @trouble.photo.url %> <br/>
