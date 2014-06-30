@@ -17,6 +17,10 @@
   <!-- <strong>Address:</strong>
   <%= @trouble.address %> <br/> -->
 
+  <% if current_user.mod %>
+    <strong> <%= link_to 'Edit', edit_trouble_path(@trouble) %></strong> <br>
+  <% end %>
+
   <strong>Descriere:</strong>
   <%= @trouble.description %> <br/>
 
@@ -27,7 +31,6 @@
     <%= link_to image_tag(@trouble.photo.url(:medium)), @trouble.photo.url %> <br/>
   <% end %>
 
-  <strong> <%= link_to 'Edit', edit_trouble_path(@trouble) %></strong>
 
 </div>
 
@@ -40,6 +43,7 @@
 
   <% if current_user %>
     <h2>Add a comment</h2>
+    <hr>
     <%= render 'comments/form' %>
   <% else %>
     <p>Este nevoie sa te loghezi (sau <%= link_to "sa te inregistrezi", "/auth/identity/register" %> daca nu ai deja un cont), pentru a putea posta comentarii.</p>

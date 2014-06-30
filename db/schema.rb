@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629203310) do
+ActiveRecord::Schema.define(version: 20140630190035) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -36,7 +36,10 @@ ActiveRecord::Schema.define(version: 20140629203310) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "troubles", force: true do |t|
     t.string   "name"

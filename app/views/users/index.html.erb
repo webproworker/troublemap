@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Membrii site-ului eProblema</h1>
+  <hr>
+
+  <% @users.each do |user| %>
+    <div>
+      <h4> <%= user.name %> </h4>
+      <strong> <%= link_to 'Editeaza', edit_user_path(user) %></strong> |
+      <strong> <%= link_to 'Sterge', user_path(user), method: :delete, data: {confirm: 'Esti sigur ca vrei sa stergi aceasta problema?'} %> </strong>
+    </div>
+  <% end %>
+</div>

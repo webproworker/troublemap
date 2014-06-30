@@ -1,9 +1,9 @@
 <div class="container">
   <h2>Orasele din Romania in care au fost raportate sesizari</h2>
-
+  <hr>
+  
   <% @cities.each do |city|%> 
     <%= link_to city.name, city_path(city) %> <br>
   <% end %>
 
-  <!-- <strong> <%= link_to "Adauga un oras", new_city_path %> </strong> -->
 </div>

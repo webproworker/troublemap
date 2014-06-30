@@ -4,9 +4,9 @@ class TroublesController < ApplicationController
 
   # before_action :authenticate, only: [:show, :frontpage]
 
-  def authenticate
-    redirect_to(new_identity_path) unless @current_user
-  end
+  # def authenticate
+  #   redirect_to(new_identity_path) unless @current_user
+  # end
 
   def index
     @troubles = Trouble.all
