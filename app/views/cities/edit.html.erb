@@ -1,8 +1,8 @@
 <div class="container">
-  <h1>Oras nou</h1>
+  <h1>Edit</h1>
   <hr>
 
-  <%= form_for :city, url: cities_path, :html => { :class => "form-horizontal"} do |f| %>
+  <%= form_for :city, url: city_path(@city.id), :html => { :multipart => true, :class => "form-horizontal" }, method: :patch do |f| %>
     <% if @city.errors.any? %>
       <div id="errorExplanation">
         <h2><%= pluralize(@city.errors.count, "error") %> prohibited this post from being saved</h2>
@@ -14,30 +14,28 @@
       </div>
     <% end %>
 
+
     <div class="form-group">
-      <%= f.label :name, "Nume", class: "col-md-2 control-label" %>
+      <%= f.label :name, 'Nume', class: "col-md-2 control-label" %>
       <div class="col-md-10">
-        <%= f.text_field :name, class: "form-control", placeholder: "Numele orasului" %>
+        <%= f.text_field :name, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :email, "Email", class: "col-md-2 control-label" %>
+      <%= f.label :email, 'Email', class: "col-md-2 control-label" %>
       <div class="col-md-10">
-        <%= f.text_field :email, class: "form-control", placeholder: "Email-ul pentru sesizari" %>
+        <%= f.text_field :email, class: "form-control" %>
       </div>
     </div>
 
     <div class="col-md-offset-2 col-md-2">
-      <%= button_tag(:class => "btn btn-primary submit-city") do %>
-        <i class="fa fa-plus"></i>
-        Adauga oras
+      <%= button_tag(:class => "btn btn-primary btn-block submit-trouble") do %>
+       Salveaza
       <% end %>
     </div>
 
   <% end %>
-
-  <%#= link_to 'Inapoi la orase', cities_path %>
 
   <%= yield :scripts %>
 </div>

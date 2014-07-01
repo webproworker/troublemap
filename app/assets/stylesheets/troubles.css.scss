@@ -15,5 +15,16 @@ body, html{
 }
 
 .trouble-address-input{
-  display: none;
+  display: none
+  // opacity: 0;
+}
+
+.all-map{
+  height: 600px;
+  width: 100%;
+}
+
+.trouble-photo{
+  border: 5px solid #dedede;
+  margin: 10px;
 }

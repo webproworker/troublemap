@@ -17,8 +17,14 @@
   <!-- <strong>Address:</strong>
   <%= @trouble.address %> <br/> -->
 
-  <% if current_user.mod %>
-    <strong> <%= link_to 'Edit', edit_trouble_path(@trouble) %></strong> <br>
+  <% if current_user %>
+    <% if current_user.mod %>
+      <strong> <%= link_to 'Edit', edit_trouble_path(@trouble) %></strong> <br>
+    <% end %>
+  <% end %>
+
+  <% if @trouble.photo.url != "Missing" %>
+    <%= link_to image_tag(@trouble.photo.url(:medium), class:"trouble-photo pull-right"), @trouble.photo.url %> <br/>
   <% end %>
 
   <strong>Descriere:</strong>
@@ -26,10 +32,6 @@
 
   <strong>Gravitate:</strong>
   <%= @trouble.severity %> <br/>
-
-  <% if @trouble.photo.url != "Missing" %>
-    <%= link_to image_tag(@trouble.photo.url(:medium)), @trouble.photo.url %> <br/>
-  <% end %>
 
 
 </div>
@@ -42,13 +44,13 @@
 <div class="container">
 
   <% if current_user %>
-    <h2>Add a comment</h2>
+    <h2>Adauga un comentariu</h2>
     <hr>
     <%= render 'comments/form' %>
   <% else %>
     <p>Este nevoie sa te loghezi (sau <%= link_to "sa te inregistrezi", "/auth/identity/register" %> daca nu ai deja un cont), pentru a putea posta comentarii.</p>
   <% end %>
 
-  <h2>Comments</h2>
+  <h2>Commentarii</h2>
   <%= render @trouble.comments %>
 </div>

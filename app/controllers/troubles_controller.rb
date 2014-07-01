@@ -10,6 +10,11 @@ class TroublesController < ApplicationController
 
   def index
     @troubles = Trouble.all
+    @jsonAll = Trouble.all.to_gmaps4rails do |trouble, marker|
+      marker.infowindow render_to_string(:partial => "troubles/marker_infowindow", :locals => {:trouble => trouble})
+      marker.title trouble.address
+      marker.json({ :id => trouble.id, :foo => "bar" })
+    end
   end
 
   def frontpage
@@ -18,7 +23,7 @@ class TroublesController < ApplicationController
       marker.title trouble.address
       marker.json({ :id => trouble.id, :foo => "bar" })
     end
-  end
+  end  
 
   def new
     @trouble = Trouble.new
@@ -28,8 +33,8 @@ class TroublesController < ApplicationController
   def create
     @trouble = Trouble.new(params[:trouble].permit(:name, :description, :latitude, :longitude, :address, :city_id, :author, :severity, :photo))
     if @trouble.save
-      LeaderMailer.complaint(@trouble).deliver
-      redirect_to @trouble.city
+      # LeaderMailer.complaint(@trouble).deliver
+      redirect_to @trouble
     else
       render 'new'
     end
@@ -52,7 +57,7 @@ class TroublesController < ApplicationController
   def update
     @trouble = Trouble.find(params[:id])
 
-    if @trouble.update(params[:trouble].permit(:name, :location, :description, :latitude, :longitude, :address, :city_id, :photo))
+    if @trouble.update(params[:trouble].permit(:name, :description, :latitude, :longitude, :address, :city_id, :photo))
       redirect_to @trouble
     else
       render 'edit'

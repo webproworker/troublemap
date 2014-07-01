@@ -41,7 +41,7 @@
           markersArray.push(marker);
           // Set and open infowindow
           var infowindow = new google.maps.InfoWindow({
-            content: '<div class="popup"><h2>Awesome!</h2><p>Drag me and adjust the zoom level.</p>'
+            content: '<div class="popup"><h2>Aceasta este locatia aleasa</h2><p>Puteti muta cursorul in orice loc de pe harta.</p>'
           });
           infowindow.open(Gmaps.map.serviceObject, marker);
           // Listen to drag & drop
@@ -139,6 +139,7 @@
 
     <div class="col-md-offset-2 col-md-2">
       <%= button_tag(:class => "btn btn-primary btn-block submit-trouble") do %>
+        <i class="fa fa-arrow-right"></i>
        Trimite sesizarea
       <% end %>
     </div>

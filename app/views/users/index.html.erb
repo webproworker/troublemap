@@ -5,8 +5,12 @@
   <% @users.each do |user| %>
     <div>
       <h4> <%= user.name %> </h4>
-      <strong> <%= link_to 'Editeaza', edit_user_path(user) %></strong> |
-      <strong> <%= link_to 'Sterge', user_path(user), method: :delete, data: {confirm: 'Esti sigur ca vrei sa stergi aceasta problema?'} %> </strong>
+      <% if current_user %>
+        <% if current_user.mod %>
+          <strong> <%= link_to 'Editeaza', edit_user_path(user) %></strong> |
+          <strong> <%= link_to 'Sterge', user_path(user), method: :delete, data: {confirm: 'Esti sigur ca vrei sa stergi aceasta problema?'} %> </strong>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 </div>

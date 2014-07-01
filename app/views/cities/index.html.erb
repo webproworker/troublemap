@@ -4,6 +4,13 @@
   
   <% @cities.each do |city|%> 
     <%= link_to city.name, city_path(city) %> <br>
+    <% if current_user %>
+      <% if current_user.mod %>
+        <strong> <%= link_to 'Editeaza', edit_city_path(city) %></strong> |
+        <strong> <%= link_to 'Sterge', city_path(city), method: :delete, data: {confirm: 'Esti sigur ca vrei sa stergi aceasta problema?'} %> </strong>
+      <% end %>
+    <% end %>
+    <br> <br>
   <% end %>
 
 </div>

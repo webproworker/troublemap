@@ -1,6 +1,7 @@
 <div class="container new-account-container">
 
   <h1>Creeaza un cont eProblema.ro</h1>
+  <hr>
 
   <%= form_tag "/auth/identity/register", class: "form-horizontal" do %>
     <% if @identity && @identity.errors.any? %>

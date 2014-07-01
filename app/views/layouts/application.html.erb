@@ -12,17 +12,28 @@
   <header>
     <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
       <div class="container-fluid">
-        <!-- <div class="navbar-header">
-        </div> -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="logo">
+            <a class="navbar-brand" href="/">
+              eProblema
+            </a>
+          </div>
+        </div>
         <div class="collapse navbar-collapse">
+
           <ul class="nav navbar-nav">
-            <li>
-              <%= link_to '<i class="fa fa-home"></i> Acasa'.html_safe, root_path %>
-            </li>
-            <li><%= link_to "Orase", cities_path %></li>
-            <li><%= link_to "Harta sesizarilor din tara", controller: "troubles" %></li>
-            <li><%= link_to "Membri", controller: "users" %></li>
-            <li><%= link_to "Adauga problema", new_trouble_path %></li>
+            <li><%= link_to '<i class="fa fa-building"></i> Orase'.html_safe, cities_path %></li>
+            <li><%= link_to '<i class="fa fa-map-marker"></i> Harta sesizarilor din tara'.html_safe, controller: "troubles" %></li>
+            <%if current_user %>
+              <li><%= link_to '<i class="fa fa-users"></i> Membri'.html_safe, controller: "users" %></li>
+            <% end %>
+            <li><%= link_to '<i class="fa fa-exclamation-circle"></i> Formuleaza o sesizare'.html_safe, new_trouble_path %></li>
           </ul>
 
           <%if current_user %>
@@ -34,8 +45,8 @@
                       Options <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                      <li><%= link_to "Adauga oras", new_city_path %></li>
-                      <li><%= link_to "Toate sesizarile", troubles_path %></li>
+                      <li><%= link_to '<i class="fa fa-plus"></i> Adauga oras'.html_safe, new_city_path %></li>
+                      <li><%= link_to '<i class="fa fa-list"></i> Toate sesizarile'.html_safe, troubles_path %></li>
                       <li class="divider"></li>
                       <li><%= link_to '<i class="fa fa-sign-out"></i> Deconectare'.html_safe, signout_path %></li>
                     </ul>
@@ -55,11 +66,11 @@
                   Login <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#" data-toggle="modal" data-target="#userPassInput">User & Parola</a></li>
-                  <li><%= link_to "Twitter", "/auth/twitter" %></li>
-                  <li><%= link_to "Facebook", "/auth/facebook" %></li>
+                  <li><a href="#" data-toggle="modal" data-target="#userPassInput"><i class="fa fa-user"></i> User & Parola</a></li>
+                  <li><%= link_to '<i class="fa fa-twitter"></i> Twitter'.html_safe, "/auth/twitter" %></li>
+                  <li><%= link_to '<i class="fa fa-facebook"></i> Facebook'.html_safe, "/auth/facebook" %></li>
                   <li class="divider"></li>
-                  <li><%= link_to "Inregistrare", new_identity_path %></li>
+                  <li><%= link_to '<i class="fa fa-sign-in"></i> Inregistrare'.html_safe, new_identity_path %></li>
                 </ul>
               </li>
             </ul>

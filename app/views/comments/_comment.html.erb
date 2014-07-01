@@ -7,9 +7,11 @@
     <%= comment.body %>
   </p>
 
-  <% if current_user.mod %>
-    <p>
-      <%= link_to 'Sterge', [comment.trouble, comment], method: :delete, data: {confirm: 'Esti sigur ca vrei sa stergi acest comentariu?'} %>
-    </p>
+  <% if current_user %>
+    <% if current_user.mod %>
+      <p>
+        <%= link_to 'Sterge', [comment.trouble, comment], method: :delete, data: {confirm: 'Esti sigur ca vrei sa stergi acest comentariu?'} %>
+      </p>
+    <% end %>
   <% end %>
 </div>

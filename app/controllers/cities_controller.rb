@@ -23,4 +23,18 @@ class CitiesController < ApplicationController
     @cities = City.all.order('name')
   end
 
+  def edit
+    @city = City.find_by_param(params[:id])
+  end
+
+  def update
+    @city = City.find(params[:id])
+
+    if @city.update(params[:city].permit(:name, :email))
+      redirect_to @city
+    else
+      render 'edit'
+    end
+  end
+
 end
