@@ -36,7 +36,7 @@
   <% end %>
 
   <%= gmaps(:markers => {"data" => @json},
-            :map_options => { :detect_location => true, :center_on_user => true, :zoom => 8, "auto_zoom" => false}
+            :map_options => { :detect_location => true, :zoom => 8, "auto_zoom" => false}
             )%>
 
   <%= content_for :scripts do %>

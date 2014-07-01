@@ -33,7 +33,7 @@ class TroublesController < ApplicationController
   def create
     @trouble = Trouble.new(params[:trouble].permit(:name, :description, :latitude, :longitude, :address, :city_id, :author, :severity, :photo))
     if @trouble.save
-      # LeaderMailer.complaint(@trouble).deliver
+      LeaderMailer.complaint(@trouble).deliver
       redirect_to @trouble
     else
       render 'new'
